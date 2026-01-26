@@ -30,6 +30,8 @@ fishd.*
 .config/flipperdevices.com
 .config/gtk*
 .config/configstore
+.config/uv
+.config/raycast
 
 # Vim
 Session.vim

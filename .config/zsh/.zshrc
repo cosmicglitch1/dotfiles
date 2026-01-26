@@ -11,16 +11,19 @@ PROMPT='%(j.%F{yellow} %F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f
 
 # tmux package manager
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
-    "$HOME/.tmux/plugins/tpm/bin/install_plugins"  &>/dev/null
+    "$HOME/.tmux/plugins/tpm/bin/install_plugins" &>/dev/null
 fi
 
-if [ -z "$TMUX" ] && [ -n "$ALACRITTY_SOCKET" ]; then
-  session="term-$(date +%s)"
-  tmux new-session -d -s "$session" -c "$PWD"
-  tmux split-window -v -t "$session" -c "$PWD"
-  tmux send-keys -t "$session:0.0" "nvim" C-m
-  exec tmux attach -t "$session"
-fi
+# fuck this piece of shit
+# Only attach if inside Alacritty and tmux is installed
+# if command -v tmux &>/dev/null && [ -n "$ALACRITTY_SOCKET" ] && [ -z "$TMUX" ]; then
+#   # Don't fork immediately — just start a session in the background
+#   if ! tmux has-session -t default 2>/dev/null; then
+#     tmux new-session -d -s default -c "$PWD"
+#   fi
+#   # Attach safely
+#   tmux attach -t default || echo "Failed to attach tmux, continuing..."
+# fi
 
 # eval "$(starship init zsh)"
 # starship preset gruvbox-rainbow -o ~/.config/starship.toml
@@ -28,7 +31,7 @@ fi
 
 source ~/.extras
 
-# why not use nvim?
+# I guess...
 alias vim=nvim
 
 alias gitretrack="git rm -r --cached . && git add ."
@@ -43,6 +46,11 @@ alias gck="git checkout"
 
 export PATH="$HOME/compiled/bin:$PATH"
 export PATH="/opt/local/libexec/gnubin:$PATH"
+
+export LD_FOR_TARGET=ld
+export OBJCOPY_FOR_TARGET=/opt/local/libexec/llvm-16/bin/llvm-objcopy
+export OBJDUMP_FOR_TARGET=/opt/local/libexec/llvm-16/bin/llvm-objdump
+export READELF_FOR_TARGET=/opt/local/libexec/llvm-16/bin/llvm-readelf
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -61,8 +69,29 @@ export PKG_CONFIG_PATH="/opt/local/lib/pkgconfig:/opt/local/share/pkgconfig"
 export CPPFLAGS="-I/opt/local/include"
 export LDFLAGS="-L/opt/local/lib"
 
-export PNPM_HOME="/Users/glitchdetected/Library/pnpm"
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+export PNPM_HOME="/Users/decompilexyz/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# Created by `pipx` on 2025-10-29 10:34:38
+export PATH="$PATH:/Users/decompilexyz/.local/bin"
+export PATH="$HOME/Library/Python/3.12/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/opt/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/opt/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<

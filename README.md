@@ -1,4 +1,4 @@
-# GlitchDetected Dotfiles
+# DecompileXYZ Dotfiles
 
 ###### Some of my configs are filed away in my`$HOME`_
 
@@ -15,7 +15,7 @@ xcode-select --install
 
 Bootstrap and install script:
 ```zsh
-git clone https://github.com/glitchdetected1/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && source bootstrap.sh
+git clone https://github.com/decompilexyz/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && source bootstrap.sh
 ```
 
 To Update, `cd` into `~/.dotfiles` and run this:
@@ -63,7 +63,7 @@ Then import the `init/space.itermcolors` file (`~/init` contains terminal themes
 
 ## Feedback
 Send some feedback, suggestions, stuff like that here
-[welcome](https://github.com/glitchdetected1/dotfiles/issues)!
+[welcome](https://github.com/decompilexyz/dotfiles/issues)!
 
 ## Acknowledgements
 This is where I got the inspiration and some of the code. Huge thanks to these people!
