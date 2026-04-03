@@ -9,21 +9,23 @@ setopt PROMPT_SUBST
 PROMPT='%(j.%F{yellow} %F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f
 ❯ '
 
-# tmux package manager
+
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
     "$HOME/.tmux/plugins/tpm/bin/install_plugins" &>/dev/null
 fi
 
-# fuck this piece of shit
-# Only attach if inside Alacritty and tmux is installed
-# if command -v tmux &>/dev/null && [ -n "$ALACRITTY_SOCKET" ] && [ -z "$TMUX" ]; then
-#   # Don't fork immediately — just start a session in the background
-#   if ! tmux has-session -t default 2>/dev/null; then
-#     tmux new-session -d -s default -c "$PWD"
-#   fi
-#   # Attach safely
-#   tmux attach -t default || echo "Failed to attach tmux, continuing..."
-# fi
+if command -v tmux &>/dev/null && [ -n "$ALACRITTY_SOCKET" ] && [ -z "$TMUX" ]; then
+    SESSION="alacritty-$$"
+
+    tmux new-session -d -s "$SESSION" -c "$PWD"
+    tmux split-window -v -p 30 -t "$SESSION:0"
+    tmux send-keys -t "$SESSION:0.0"
+    tmux select-pane -t "$SESSION:0.1"
+
+    tmux attach -t "$SESSION" || echo "Failed to attach tmux, continuing..."
+    tmux kill-session -t "$SESSION" 2>/dev/null
+fi
+
 
 # eval "$(starship init zsh)"
 # starship preset gruvbox-rainbow -o ~/.config/starship.toml
@@ -71,14 +73,14 @@ export LDFLAGS="-L/opt/local/lib"
 
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
-export PNPM_HOME="/Users/decompilexyz/Library/pnpm"
+export PNPM_HOME="/Users/decompile/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
 # Created by `pipx` on 2025-10-29 10:34:38
-export PATH="$PATH:/Users/decompilexyz/.local/bin"
+export PATH="$PATH:/Users/decompile/.local/bin"
 export PATH="$HOME/Library/Python/3.12/bin:$PATH"
 
 # >>> conda initialize >>>
@@ -95,3 +97,4 @@ export PATH="$HOME/Library/Python/3.12/bin:$PATH"
 # fi
 # unset __conda_setup
 # <<< conda initialize <<<
+. "/Users/decompile/.deno/env"

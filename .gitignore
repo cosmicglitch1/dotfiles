@@ -25,9 +25,14 @@ node_modules
 bower_components
 fishd.*
 .extras
+gtk-*
 
 # .config
+.config/configstore
+.config/fish
 .config/flipperdevices.com
+.config/gtk-2.0
+.config/gtk-*
 .config/gtk*
 .config/configstore
 .config/uv

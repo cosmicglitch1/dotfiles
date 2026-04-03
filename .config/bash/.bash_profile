@@ -63,3 +63,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+. "/Users/decompile/.deno/env"

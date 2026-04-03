@@ -70,50 +70,96 @@ return {
 		},
 	},
 
-	{
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
-  },
-  keys = {
-    { "<leader>e", ":Neotree toggle<CR>", desc = "Toggle Neo-tree" },
-  },
-  lazy = false,
-  config = function()
-    require("neo-tree").setup({
-      close_if_last_window = true,
-      popup_border_style = "rounded",
-      enable_git_status = true,
-      enable_diagnostics = true,
-      sort_case_insensitive = true,
-      default_component_configs = {
-        container = { enable_character_fade = true },
-        indent = { padding = 1 },
-        icon = { folder_closed = "", folder_open = "" },
-      },
-      window = {
-        position = "left",
-        width = 30,
-      },
-      filesystem = {
-        filtered_items = {
-          hide_dotfiles = false,
-          hide_gitignored = false,
-          hide_by_name = {},
-          hide_by_pattern = {},
-          always_show = {
-            ".gitignore",
-            ".env",
-          },
-        },
-        follow_current_file = true,
-        use_libuv_file_watcher = true,
-      },
-    })
+-- 	{
+--   "nvim-neo-tree/neo-tree.nvim",
+--   branch = "v3.x",
+--   dependencies = {
+--     "nvim-lua/plenary.nvim",
+--     "nvim-tree/nvim-web-devicons",
+--     "MunifTanjim/nui.nvim",
+--   },
+--   keys = {
+--     { "<leader>e", ":Neotree toggle<CR>", desc = "Toggle Neo-tree" },
+--   },
+--   lazy = false,
+--   config = function()
+--     require("neo-tree").setup({
+--       close_if_last_window = true,
+--       popup_border_style = "rounded",
+--       enable_git_status = true,
+--       enable_diagnostics = true,
+--       sort_case_insensitive = true,
+--       default_component_configs = {
+--         container = { enable_character_fade = true },
+--         indent = { padding = 1 },
+--         icon = { folder_closed = "", folder_open = "" },
+--       },
+--       window = {
+--         position = "left",
+--         width = 30,
+--       },
+--       filesystem = {
+--         filtered_items = {
+--           hide_dotfiles = false,
+--           hide_gitignored = false,
+--           hide_by_name = {},
+--           hide_by_pattern = {},
+--           always_show = {
+--             ".gitignore",
+--             ".env",
+--           },
+--         },
+--         follow_current_file = true,
+--         use_libuv_file_watcher = true,
+--       },
+--     })
+--   end,
+-- },
+
+{
+  'dmtrKovalenko/fff.nvim',
+  build = function()
+    -- this will download prebuild binary or try to use existing rustup toolchain to build from source
+    -- (if you are using lazy you can use gb for rebuilding a plugin if needed)
+    require("fff.download").download_or_build_binary()
   end,
+  -- if you are using nixos
+  -- build = "nix run .#release",
+  opts = { -- (optional)
+    debug = {
+      enabled = true,     -- we expect your collaboration at least during the beta
+      show_scores = true, -- to help us optimize the scoring system, feel free to share your scores!
+    },
+  },
+  -- No need to lazy-load with lazy.nvim.
+  -- This plugin initializes itself lazily.
+  lazy = false,
+  keys = {
+    {
+      "ff", -- try it if you didn't it is a banger keybinding for a picker
+      function() require('fff').find_files() end,
+      desc = 'FFFind files',
+    },
+    {
+      "fg",
+      function() require('fff').live_grep() end,
+      desc = 'LiFFFe grep',
+    },
+    {
+      "fz",
+      function() require('fff').live_grep({
+        grep = {
+          modes = { 'fuzzy', 'plain' }
+        }
+      }) end,
+      desc = 'Live fffuzy grep',
+    },
+    {
+      "fc",
+      function() require('fff').live_grep({ query = vim.fn.expand("<cword>") }) end,
+      desc = 'Search current word',
+    },
+  }
 },
 
 	{

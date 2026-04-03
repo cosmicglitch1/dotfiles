@@ -61,13 +61,36 @@ return {
 	},
 
 	{
-		"snacks.nvim",
-		opts = {
-			scroll = { enabled = false },
-			explorer = { enabled = false },
-		},
-		keys = {},
-	},
+        "folke/snacks.nvim",
+        opts = {
+            scroll = { enabled = false },
+            explorer = { enabled = true },
+            picker = {
+                hidden = true,
+                ignored = true,
+                sources = {
+                    explorer = {
+                        win = {
+                            list = {
+                                keys = {
+                                    ["."] = "toggle_hidden",
+                                    ["H"] = "toggle_ignored",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+        keys = {
+            { "<leader>fe", function() Snacks.explorer() end, desc = "File Explorer" },
+        },
+    },
+
+	{
+        "nvim-neo-tree/neo-tree.nvim",
+        enabled = false,
+    },
 
 	-- buffer line
 	{
