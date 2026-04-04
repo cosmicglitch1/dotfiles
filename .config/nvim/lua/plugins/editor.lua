@@ -36,7 +36,7 @@ return {
 },
 
 	{
-		"echasnovski/mini.hipatterns",
+		"mini.hipatterns",
 		event = "BufReadPre",
 		opts = {
 			highlighters = {
@@ -164,7 +164,9 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
 		dependencies = {
+			"nvim-lua/plenary.nvim",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "make",
@@ -278,6 +280,10 @@ return {
 			local actions = require("telescope.actions")
 			local fb_actions = require("telescope").extensions.file_browser.actions
 
+			-- makes sure opts and opts.defaults exist before extending them
+			opts = opts or {}
+    		opts.defaults = opts.defaults or {}
+
 			opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
 				wrap_results = true,
 				layout_strategy = "horizontal",
@@ -303,9 +309,7 @@ return {
 					-- disables netrw and use telescope-file-browser in its place
 					hijack_netrw = true,
 					mappings = {
-						-- your custom insert mode mappings
 						["n"] = {
-							-- your custom normal mode mappings
 							["N"] = fb_actions.create,
 							["h"] = fb_actions.goto_parent_dir,
 							["/"] = function()

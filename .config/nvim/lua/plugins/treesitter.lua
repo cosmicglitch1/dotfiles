@@ -5,22 +5,13 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
-				"astro",
-				"cmake",
-				"cpp",
-				"css",
-				"fish",
-				"gitignore",
-				"go",
-				"graphql",
-				"http",
-				"java",
-				"php",
-				"rust",
-				"scss",
-				"sql",
-				"svelte",
-			},
+                "astro", "cmake", "cpp", "css", "fish", "gitignore",
+                "go", "graphql", "http", "java", "php", "rust",
+                "scss", "sql", "svelte", "c", "asm", "make", "python", 
+				"bash", "objc", "json", "jsonc", "yaml", "toml", "dockerfile",
+                "html", "javascript", "typescript", "tsx", "markdown",
+                "markdown_inline", "vim", "vimdoc", "lua", "diff", "regex"
+            },
 
 			-- matchup = {
 			-- 	enable = true,
@@ -53,7 +44,7 @@ return {
 			},
 		},
 		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
+			require("nvim-treesitter").setup(opts)
 
 			-- MDX
 			vim.filetype.add({
