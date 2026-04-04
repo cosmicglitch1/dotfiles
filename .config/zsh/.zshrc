@@ -9,23 +9,21 @@ setopt PROMPT_SUBST
 PROMPT='%(j.%F{yellow} %F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f
 ❯ '
 
-
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
     "$HOME/.tmux/plugins/tpm/bin/install_plugins" &>/dev/null
 fi
 
-if command -v tmux &>/dev/null && [ -n "$ALACRITTY_SOCKET" ] && [ -z "$TMUX" ]; then
-    SESSION="alacritty-$$"
+# if command -v tmux &>/dev/null && [ -n "$ALACRITTY_SOCKET" ] && [ -z "$TMUX" ]; then
+#     SESSION="alacritty-$$"
 
-    tmux new-session -d -s "$SESSION" -c "$PWD"
-    tmux split-window -v -p 30 -t "$SESSION:0"
-    tmux send-keys -t "$SESSION:0.0"
-    tmux select-pane -t "$SESSION:0.1"
+#     tmux new-session -d -s "$SESSION" -c "$PWD"
+#     tmux split-window -v -p 30 -t "$SESSION:0"
+#     tmux send-keys -t "$SESSION:0.0"
+#     tmux select-pane -t "$SESSION:0.1"
 
-    tmux attach -t "$SESSION" || echo "Failed to attach tmux, continuing..."
-    tmux kill-session -t "$SESSION" 2>/dev/null
-fi
-
+#     tmux attach -t "$SESSION" || echo "Failed to attach tmux, continuing..."
+#     tmux kill-session -t "$SESSION" 2>/dev/null
+# fi
 
 # eval "$(starship init zsh)"
 # starship preset gruvbox-rainbow -o ~/.config/starship.toml
@@ -33,7 +31,6 @@ fi
 
 source ~/.extras
 
-# I guess...
 alias vim=nvim
 
 alias gitretrack="git rm -r --cached . && git add ."
@@ -79,7 +76,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# Created by `pipx` on 2025-10-29 10:34:38
 export PATH="$PATH:/Users/decompile/.local/bin"
 export PATH="$HOME/Library/Python/3.12/bin:$PATH"
 
