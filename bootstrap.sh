@@ -54,6 +54,7 @@ ln -s ~/.dotfiles/.extras ~/.extras
 ln -s ~/.dotfiles/.config/bash/.bashrc ~/.bashrc
 ln -s ~/.dotfiles/.config/bash/.bash_prompt ~/.bash_prompt
 ln -s ~/.dotfiles/.config/bash/.bash_profile ~/.bash_profile
+ln -s ~/.dotfiles/.config/home-manager ~/.home-manager
 
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

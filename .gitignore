@@ -36,6 +36,7 @@ gtk-*
 .config/configstore
 .config/uv
 .config/raycast
+inngest
 
 # Vim
 Session.vim

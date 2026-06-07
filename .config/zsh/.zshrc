@@ -15,14 +15,14 @@ fi
 
 # if command -v tmux &>/dev/null && [ -n "$ALACRITTY_SOCKET" ] && [ -z "$TMUX" ]; then
 #     SESSION="alacritty-$$"
-
+#
 #     tmux new-session -d -s "$SESSION" -c "$PWD"
 #     tmux split-window -v -p 30 -t "$SESSION:0"
 #     tmux send-keys -t "$SESSION:0.0"
 #     tmux select-pane -t "$SESSION:0.1"
-
+#
 #     tmux attach -t "$SESSION" || echo "Failed to attach tmux, continuing..."
-#     tmux kill-session -t "$SESSION" 2>/dev/null
+#     # tmux kill-session -t "$SESSION" 2>/dev/null
 # fi
 
 # eval "$(starship init zsh)"
@@ -81,16 +81,16 @@ export PATH="$HOME/Library/Python/3.12/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/opt/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/opt/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
+__conda_setup="$('/Users/decompile/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/decompile/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/decompile/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/decompile/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 . "/Users/decompile/.deno/env"
