@@ -94,3 +94,12 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 . "/Users/decompile/.deno/env"
+
+# pnpm
+export PNPM_HOME="/Users/decompile/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+eval "$(~/.local/bin/mise activate bash)"

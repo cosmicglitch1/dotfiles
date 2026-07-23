@@ -83,3 +83,5 @@ Pods/
 
 # GitHub
 github-copilot
+
+flake.lock

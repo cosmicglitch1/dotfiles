@@ -1,0 +1,51 @@
+# Mole Cleanup Preview - 2026-07-22 21:29:11
+#
+# How to protect files:
+# 1. Copy any path below to ~/.config/mole/whitelist
+# 2. Run: mo clean --whitelist
+#
+# Example:
+#   /Users/*/Library/Caches/com.example.app
+#
+
+
+=== User essentials ===
+/Users/decompile/Library/Caches  # 1.12GB, 11 items
+/Users/decompile/Library/Logs/DiagnosticReports  # 45KB
+
+=== App caches ===
+/Users/decompile/Library/Saved Application State  # 70KB, 3 items
+/Users/decompile/Library/Suggestions  # 8.2MB, 19 items
+/Users/decompile/Library/Calendars/Calendar Cache  # 1.2MB
+/Users/decompile/Library/Containers/com.apple.mediaanalysisd/Data/Library/Caches/PFSceneTaxonomyData.index  # 927KB
+/Users/decompile/Library/Containers/com.apple.stocks/Data/Library/Caches  # 3.6MB, 11 items
+/Users/decompile/Library/Caches/com.apple.helpd  # 29.6MB, 9 items
+/Users/decompile/Library/Caches/GeoServices  # 32.2MB, 7 items
+/Users/decompile/Library/Containers/com.apple.AvatarUI.AvatarPickerMemojiPicker/Data/Library/Caches/com.apple.AvatarKit  # 40.2MB
+/Users/decompile/Library/Caches/com.apple.AppleMediaServices  # 417KB, 4 items
+/Users/decompile/Library/Caches/com.apple.parsecd  # 17.2MB, 17 items
+
+=== Browsers ===
+/Users/decompile/Library/Caches/com.apple.Safari/WebKitCache  # 4KB
+
+=== Cloud & Office ===
+
+=== Developer tools ===
+/Users/decompile/.npm/_npx/ca8ac1ce5606ff91  # 520KB
+/Users/decompile/.npm/_logs  # 336KB, 14 items
+/Users/decompile/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f  # 91.3MB
+/Users/decompile/.cargo/git  # 6.8MB, 3 items
+/Users/decompile/Library/Caches/SentryCrash/Raycast  # 4KB
+/Users/decompile/Library/Application Support/Code/logs  # 3.3MB, 2 items
+/Users/decompile/Library/Application Support/Code/Cache  # 15.6MB, 2 items
+/Users/decompile/Library/Application Support/Code/CachedData  # 25.9MB, 2 items
+/Users/decompile/Library/Application Support/Code/WebStorage/3/CacheStorage  # 42KB, 2 items
+
+=== Applications ===
+/Users/decompile/.zcompdump  # 48KB
+
+=== Virtualization ===
+
+=== Application Support ===
+
+=== App leftovers ===
